@@ -1,8 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Image } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../.././src/Assets/logo/years1.png'
+import { AuthContext } from '../context/UserContext';
+import { FaUser } from 'react-icons/fa'
+import { Tooltip } from 'react-tooltip'
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate();
+    console.log('context ', user)
+    const handleSignout = () => {
+        logOut()
+            .then(() => {
+                navigate('/register')
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <div className="navbar bg-primary text-primary-content">
@@ -12,6 +26,7 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary rounded-box w-52">
+                            <li><Link to='/'>Home</Link></li>
                             <li><Link to='/courses'>Courses</Link></li>
                             <li><Link to='/blog'>Blog</Link></li>
                             <li><Link to='/faq'>FAQ</Link></li>
@@ -24,14 +39,33 @@ const Header = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
+                        <li><Link to='/'>Home</Link></li>
                         <li><Link to='/courses'>Courses</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
 
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <Link className="btn">Get started</Link>
+                <div className="navbar-end pr-6">
+
+
+                    {
+                        user?.email ?
+
+                            <button onClick={handleSignout} className="btn btn-ghost">Sign Out</button>
+
+
+                            : <Link to='/login'>Login</Link>
+                    }
+                    {user?.photoURL ?
+                        <div className="tooltip tooltip-bottom " data-tip={user.displayName}>
+                            <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
+
+                        </div>
+
+                        : <FaUser></FaUser>
+                    }
+
                 </div>
             </div>
 
