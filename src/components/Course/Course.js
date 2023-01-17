@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaIcons } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaCloudDownloadAlt } from 'react-icons/fa'
 
 const Course = () => {
@@ -91,7 +91,8 @@ const Course = () => {
                                     <img src={courseDetails.img} alt="" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
                                 </div>
                                 <div className="mt-6">
-                                    <button className="btn no-animation">I don't have click animation</button>
+                                    <button className="btn btn-primary"><Link to={`/checkout/${courseDetails._id}`}>Get premium access</Link></button>
+
                                 </div>
                             </div>
 
