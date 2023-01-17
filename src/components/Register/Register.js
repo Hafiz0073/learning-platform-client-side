@@ -1,11 +1,12 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 const Register = () => {
     const { createUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
+
 
 
     const handleSubmit = event => {

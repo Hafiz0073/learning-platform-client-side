@@ -23,7 +23,6 @@ const Login = () => {
                 console.log(user)
                 form.reset()
                 navigate(from, { replace: true })
-                navigate('/')
             })
             .catch(error => {
                 console.error('error', error)
@@ -36,7 +35,6 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
-                navigate('/')
             })
             .catch(error => {
                 console.error('error', error)
