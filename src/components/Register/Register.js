@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 const Register = () => {
-    const { createUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const [passwordError, setPasswordError] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
 
 
@@ -14,20 +17,28 @@ const Register = () => {
         const form = event.target;
         const name = form.name.value
         const email = form.email.value;
+        const photoURL = form.photoURL.value;
         const password = form.password.value;
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setPasswordError('Please add At least one upper case');
+            return;
+        }
+        if (password.length < 6) {
+            setPasswordError('at least 6');
+            return
+        }
 
-        console.log(name, email, password);
+        console.log(name, email, password, photoURL);
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
-                navigate('/')
-
+                navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error('error', error)
+                setPasswordError(error.message)
             })
     }
     const handleGooglesignIn = () => {
@@ -35,8 +46,19 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.error('error', error)
+            })
 
+    }
+    const handleGithubsignIn = () => {
+        githubSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error('error', error)
@@ -68,6 +90,12 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input type="text" name="photoURL" placeholder="Photo url" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" />
@@ -79,8 +107,11 @@ const Register = () => {
                                 <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
-                        <button onClick={handleGooglesignIn} className="btn btn-outline btn-success">Googole Login</button>
-
+                        <p className='text-danger'>{passwordError}</p>
+                        <>
+                            <button onClick={handleGooglesignIn} className="btn btn-outline btn-success">Googole Login</button>
+                            <button onClick={handleGithubsignIn} className="btn btn-outline btn-success">Github Login</button>
+                        </>
                     </div>
                 </div>
             </div>

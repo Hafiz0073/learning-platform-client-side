@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Image } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../.././src/Assets/logo/years1.png'
 import { AuthContext } from '../context/UserContext';
 import { FaUser } from 'react-icons/fa'
@@ -9,11 +9,13 @@ import { Tooltip } from 'react-tooltip'
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     console.log('context ', user)
     const handleSignout = () => {
         logOut()
             .then(() => {
-                navigate('/register')
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }

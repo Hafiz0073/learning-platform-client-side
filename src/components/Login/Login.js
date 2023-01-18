@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
-    const { signIn, googleSignIn } = useContext(AuthContext)
+    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -31,6 +31,18 @@ const Login = () => {
     }
     const handleGooglesignIn = () => {
         googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.error('error', error)
+            })
+
+    }
+    const handleGithubsignIn = () => {
+        githubSignIn()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -74,7 +86,11 @@ const Login = () => {
                                 <button className="btn btn-primary"  >Login</button>
                             </div>
                         </form>
-                        <button onClick={handleGooglesignIn} className="btn btn-outline btn-success">Googole Login</button>
+                        <>
+                            <button onClick={handleGooglesignIn} className="btn btn-outline btn-success">Googole Login</button>
+                            <button onClick={handleGithubsignIn} className="btn btn-outline btn-success">Github Login</button>
+                        </>
+
                     </div>
                 </div>
             </div>
