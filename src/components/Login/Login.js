@@ -60,7 +60,7 @@ const Login = () => {
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Please Login!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. </p>
+
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
@@ -79,7 +79,8 @@ const Login = () => {
                                     <Link className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                                 <label className="label">
-                                    <span>You are a new  <Link to="/register" className="label-text-alt link link-hover">Please Register</Link></span>
+                                    <span>You are a new
+                                        <button className="btn btn-link"><Link to="/register">Please Register</Link></button> </span>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -87,8 +88,8 @@ const Login = () => {
                             </div>
                         </form>
                         <>
-                            <button onClick={handleGooglesignIn} className="btn btn-outline btn-success">Googole Login</button>
-                            <button onClick={handleGithubsignIn} className="btn btn-outline btn-success">Github Login</button>
+                            <button onClick={handleGooglesignIn} className="btn btn-outline btn-success p-3 mb-2">Googole Login</button>
+                            <button onClick={handleGithubsignIn} className="btn btn-outline btn-success p-3">Github Login</button>
                         </>
 
                     </div>

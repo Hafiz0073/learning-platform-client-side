@@ -5,13 +5,13 @@ const Home = () => {
     const maincourse = useLoaderData()
     return (
         <div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://www.themetechmount.com/wordpress/anomica/demo2/wp-content/uploads/sites/5/2019/10/blog-2.jpg")` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <h1 className="mb-5 text-5xl font-bold">Hello Guys</h1>
+                        <p className="mb-5">Welcome to our learning Platform, If Yu want to build up your carieer in Web Field?</p>
+                        <button className="btn btn-primary"><Link to={`/courses`}>Join Us</Link></button>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 const Courses = () => {
     // const [courses, setCourses] = useState([]);
     // useEffect(() => {
-    //     fetch('http://localhost:5000/courses')
+    //     fetch('https://learning-platform-server-side-two.vercel.app/courses')
     //         .then(res => res.json())
     //         .then(data => setCourses(data))
     // }, [])

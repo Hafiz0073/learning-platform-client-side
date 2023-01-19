@@ -72,7 +72,7 @@ const Register = () => {
                 <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Please Register!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. </p>
+
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
@@ -99,8 +99,10 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" />
+
                                 <label className="label">
-                                    <Link to='/login' className="label-text-alt link link-hover">Aready Have an account</Link>
+                                    <span>Aready Have an account
+                                        <button className="btn btn-link"><Link to="/login">Please Login</Link></button> </span>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -109,8 +111,8 @@ const Register = () => {
                         </form>
                         <p className='text-danger'>{passwordError}</p>
                         <>
-                            <button onClick={handleGooglesignIn} className="btn btn-outline btn-success">Googole Login</button>
-                            <button onClick={handleGithubsignIn} className="btn btn-outline btn-success">Github Login</button>
+                            <button onClick={handleGooglesignIn} className="btn btn-outline btn-success p-3 mb-2">Googole Login</button>
+                            <button onClick={handleGithubsignIn} className="btn btn-outline btn-success p-3">Github Login</button>
                         </>
                     </div>
                 </div>
