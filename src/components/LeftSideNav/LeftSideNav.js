@@ -13,8 +13,10 @@ const LeftSideNav = () => {
 
     return (
         <div>
-            <h2>Our Coursess{courses.length}</h2>
-            <h2>Database Design & Development Courses</h2>
+            <div className="container mx-auto p-4 my-4 space-y-2 text-left text-violet-600">
+                <h2 className="text-2xl font-semi-bold">Our Platforms :</h2>
+
+            </div>
             {
                 courses.map(course =>
                     <ul className="menu bg-base-100 w-56 rounded-box " key={course.id}>

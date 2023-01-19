@@ -23,8 +23,10 @@ const Courses = () => {
                 <LeftSideNav></LeftSideNav>
             </div>
             <div className="flex-auto w-3/4 ">
-                <h2>Our Coursess{courses.length}</h2>
-                <h2>Database Design & Development Courses</h2>
+                <div className="container mx-auto p-4 my-6 space-y-2 text-center text-violet-600">
+                    <h2 className="text-3xl font-bold">Database Design & Development Learning Platforms</h2>
+
+                </div>
                 <div className='lg:md:grid grid-cols-3 xs:sm:grid-cols-1'>
                     {
                         courses.map(course =>
@@ -41,7 +43,7 @@ const Courses = () => {
 
                                     }
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary"><Link to={`/course/${course._id}`}>{course.name}</Link></button>
+                                        <button className="btn btn-primary"><Link to={`/course/${course._id}`}>DETAILS</Link></button>
                                     </div>
                                 </div>
                             </div>)

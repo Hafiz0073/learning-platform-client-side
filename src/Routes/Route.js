@@ -3,6 +3,7 @@ import Checkout from "../components/Checkout/Checkout";
 import Course from "../components/Course/Course";
 import Courses from "../components/Courses/Courses";
 import Home from "../components/Home/Home";
+import Blog from "../components/Blog/Blog";
 import LeftSideNav from "../components/LeftSideNav/LeftSideNav";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
@@ -37,6 +38,10 @@ export const routes = createBrowserRouter([
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
 
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/register',
